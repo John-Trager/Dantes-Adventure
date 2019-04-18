@@ -4,7 +4,9 @@ import sys
 import time
 import os
 
+#speed
 DIFF = 6
+#amount of enemys
 ENEMY_DIFF = 10
 debug = False
 #sets game difficulty
@@ -46,6 +48,9 @@ def run():
     YELLOW = (255,255,0)
     BACKGROUND_COLOR = (0,0,0)
     PURPLE = (204, 204, 255)
+    BROWN = (97, 67, 69)
+    D_BROWN = (29,23,30)
+    D_GREEN = (0, 51, 51)
 
     PURGATOYR_SCORE = 60
     PARADISO_SCORE = 111
@@ -205,7 +210,7 @@ def run():
                     elif event.key == pygame.K_q:
                         sys.exit()
 
-    #called once player dies, and displays score
+    #called once player dies, and displays score [CSV HIGHSCORE sheet in the works]
     def end_screen():
         #file_name = 'high_score.csv'
         #file = []
@@ -220,7 +225,7 @@ def run():
         screen.fill(BACKGROUND_COLOR)
         screen.blit(level_checker(score),(0,0))
         screen.blit(dante,(player_pos[0] + 7,player_pos[1] - 10))
-
+        #text for end screen
         text = 'GAME_OVER'
         score_txt = "Score: " + str(score)
         label = myFont.render(text, 1, RED) #(102, 102, 255)
@@ -249,15 +254,15 @@ def run():
     #the start screen of the game 
     def start_screen():
         #background
-        screen.fill((29,23,30)) #brown
+        screen.fill(D_BROWN) #dark brown
         screen.blit(start_bg,(0,0))
-
+        #loading font and text for start screen
         myfont = pygame.font.SysFont('pressstart2pttf', 20)
-        textsurface = myfont.render('abandon all hope ye who enter here', False, (97, 67, 69))  #(65,36,49)
+        textsurface = myfont.render('abandon all hope ye who enter here', False, BROWN)  
         screen.blit(textsurface,(57, HEIGHT - 17))
 
         title = pygame.font.SysFont('pressstart2pttf', 38)
-        titleSurface = title.render('Dante\'s Adventure', False, (0, 51, 51))
+        titleSurface = title.render('Dante\'s Adventure', False, D_GREEN)
         screen.blit(titleSurface,(80, 48))
     
         screen.blit(dante,(player_pos[0] + 7,player_pos[1] - 10))
