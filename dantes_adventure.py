@@ -10,28 +10,28 @@ DIFF = 6
 ENEMY_DIFF = 10
 debug = False
 #sets game difficulty
-def option_set():
-    if __name__ == '__main__':
-        print(__name__)
-        user = input(" \n Hard, Medium or Easy: ").upper()
 
-        if user == "H":
-            DIFF = 5
-            ENEMY_DIFF = 13
-        elif user == "M":
-            DIFF = 6
-            ENEMY_DIFF = 10
-        elif user == "E":
-            DIFF = 8
-            ENEMY_DIFF = 7
-        elif user == 'C':
-            debug = True
-            DIFF = 5
-            ENEMY_DIFF = 10
-        else:
-            print("Error selection not found \n running defualt")
-            option_set()
-option_set()
+if __name__ == '__main__':
+    print(__name__)
+    user = input(" \n Hard, Medium or Easy: ").upper()
+
+    if user == "H":
+        DIFF = 5
+        ENEMY_DIFF = 13
+    elif user == "M":
+        DIFF = 6
+        ENEMY_DIFF = 10
+    elif user == "E":
+        DIFF = 8
+        ENEMY_DIFF = 7
+    elif user == 'C':
+        debug = True
+        DIFF = 5
+        ENEMY_DIFF = 10
+    else:
+        print("Error selection not found \n running defualt")
+        #option_set()
+
 
 #runs game
 def run():
@@ -40,6 +40,7 @@ def run():
     print("spawn_len: " + str(ENEMY_DIFF))
 
     pygame.init()
+    pygame.display.set_caption("Dante")
     WIDTH = 800
     HEIGHT = 600
 
@@ -122,7 +123,8 @@ def run():
     def draw_enemies(enemy_list):
         for enemy_pos in enemy_list:
             #draws collisons squares
-            #pygame.draw.rect(screen, BLUE, (enemy_pos[0], enemy_pos[1], enemy_size, enemy_size))
+            if debug == True:
+                pygame.draw.rect(screen, BLUE, (enemy_pos[0], enemy_pos[1], enemy_size, enemy_size))
             #draws image over square
             screen.blit(enemy_image(score),(enemy_pos[0] - 5,enemy_pos[1] - 5))
 
@@ -345,7 +347,8 @@ def run():
         #draws the enemy on the screen
         draw_enemies(enemy_list)
         #draws players colision box
-        #play = pygame.draw.rect(screen, RED, (player_pos[0], player_pos[1], player_size, player_size))
+        if debug == True:
+            play = pygame.draw.rect(screen, RED, (player_pos[0], player_pos[1], player_size, player_size))
 
         #puts players image on screen over c-box
         screen.blit(dante,(player_pos[0] + 7,player_pos[1] - 10))
