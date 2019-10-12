@@ -1,5 +1,9 @@
 # Dantes-Adventure
 Game I created for my 11th grade Dante class project
+Features 3 levels:
+* Inferno
+* Purgatorio
+* Paradiso
 
 
 # Requirements
