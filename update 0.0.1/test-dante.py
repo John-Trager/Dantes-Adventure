@@ -3,44 +3,15 @@ import random
 import sys
 import time
 import os
-
-#speed
-DIFF = 6
-#amount of enemys
-ENEMY_DIFF = 10
-debug = False
-#sets game difficulty
-
-if __name__ == '__main__':
-    print(__name__)
-    user = input(" \n Hard, Medium or Easy: ").upper()
-
-    if user == "H":
-        DIFF = 5
-        ENEMY_DIFF = 13
-    elif user == "M":
-        DIFF = 6
-        ENEMY_DIFF = 10
-    elif user == "E":
-        DIFF = 8
-        ENEMY_DIFF = 7
-    elif user == 'C':
-        debug = True
-        DIFF = 5
-        ENEMY_DIFF = 10
-    else:
-        print("Error selection not found \n running defualt")
-        #option_set()
-
+import start_up
 
 #runs game
 def run():
-    print("debug: " + str(debug))
-    print("speed: " + str(DIFF))
-    print("spawn_len: " + str(ENEMY_DIFF))
+    print("debug: " + str(start_up.debug))
+    print("speed: " + str(start_up.DIFF))
+    print("spawn_len: " + str(start_up.ENEMY_DIFF))
 
     pygame.init()
-    pygame.display.set_caption("Dante")
     WIDTH = 800
     HEIGHT = 600
 
@@ -108,13 +79,13 @@ def run():
     #functions all put below
     #function for increasing the speed
     def set_speed(score, SPEED):
-        SPEED = (score / DIFF + 9) 
+        SPEED = (score / start_up.DIFF + 9) 
         return SPEED
 
     #creates enemy object and randomly places 
     def drop_enemies(enemy_list):
         delay = random.random()
-        if len(enemy_list) < ENEMY_DIFF and delay < 0.1:
+        if len(enemy_list) < start_up.ENEMY_DIFF and delay < 0.1:
             x_pos = random.randint(0,WIDTH-enemy_size)
             y_pos = 0
             enemy_list.append([x_pos, y_pos])
@@ -123,8 +94,7 @@ def run():
     def draw_enemies(enemy_list):
         for enemy_pos in enemy_list:
             #draws collisons squares
-            if debug == True:
-                pygame.draw.rect(screen, BLUE, (enemy_pos[0], enemy_pos[1], enemy_size, enemy_size))
+            #pygame.draw.rect(screen, BLUE, (enemy_pos[0], enemy_pos[1], enemy_size, enemy_size))
             #draws image over square
             screen.blit(enemy_image(score),(enemy_pos[0] - 5,enemy_pos[1] - 5))
 
@@ -301,7 +271,7 @@ def run():
                 y = player_pos[1]
                 #main key functionality for in game
                 if event.key == pygame.K_LEFT:
-                    if debug == False:
+                    if start_up.debug == False:
                         if player_pos[0] > 35:
                             x -= player_size
                         else:
@@ -309,7 +279,7 @@ def run():
                     else:
                         x -= player_size
                 elif event.key == pygame.K_RIGHT:
-                    if debug == False:
+                    if start_up.debug == False:
                         if player_pos[0] < WIDTH - 80:
                             x += player_size
                         else:
@@ -347,8 +317,7 @@ def run():
         #draws the enemy on the screen
         draw_enemies(enemy_list)
         #draws players colision box
-        if debug == True:
-            play = pygame.draw.rect(screen, RED, (player_pos[0], player_pos[1], player_size, player_size))
+        #play = pygame.draw.rect(screen, RED, (player_pos[0], player_pos[1], player_size, player_size))
 
         #puts players image on screen over c-box
         screen.blit(dante,(player_pos[0] + 7,player_pos[1] - 10))
