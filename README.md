@@ -12,4 +12,4 @@ Game I created for my 11th grade Dante class
 * q to quit
 
 # Preview
-![main menu](photos/rm_Images/Screen Shot 2019-10-12 at 9.35.58 AM.png)
+![main menu](https://github.com/John-Trager/Dantes-Adventure/blob/master/photos/rm_Images/menu.png)
