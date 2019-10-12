@@ -10,3 +10,6 @@ Game I created for my 11th grade Dante class
 * left and right arrows (to  move the charater)
 * spacebar to enter game and reset once player has died
 * q to quit
+
+# Preview
+![main menu](/
