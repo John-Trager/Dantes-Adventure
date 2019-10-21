@@ -17,7 +17,7 @@ Features 3 levels:
 * esc to pause
 
 # Preview
-![main menu](https://github.com/John-Trager/Dantes-Adventure/blob/master/photos/rm_Images/menu.png)
-![level1](https://github.com/John-Trager/Dantes-Adventure/blob/master/photos/rm_Images/lvl1_1.png)
-![level2](https://github.com/John-Trager/Dantes-Adventure/blob/master/photos/rm_Images/lvl2_1.png)
+![main menu](photos/rm_Images/menu.png)
+![level1](photos/rm_Images/lvl1_1.png)
+![level2](photos/rm_Images/lvl2_1.png)
 
